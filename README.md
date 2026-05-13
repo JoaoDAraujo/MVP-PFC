@@ -14,7 +14,7 @@ João Vitor Fernandes D'Araujo
 - Segurança de Sessão: Express-Session e Helmet
 - Proteção de Rotas: Express-Rate-Limit
 - Frontend: HTML5, JavaScript Vanilla e Bootstrap 5
-
+- Arquitetura: MVC (Model-View-Controller)
 ---
 
 ## INSTRUÇÕES PARA EXECUÇÃO
@@ -68,3 +68,22 @@ Abaixo consta a descrição técnica de como cada item de segurança exigido foi
 - Comunicação em Trânsito (TLS): A aplicação foi blindada instanciando o módulo https nativo do Node.js utilizando certificados X.509 gerados localmente. O HSTS (Strict-Transport-Security) foi habilitado via helmet e um servidor secundário foi criado na porta 3000 apenas para capturar e redirecionar compulsoriamente conexões HTTP inseguras para a porta criptografada 3443, neutralizando ataques de Downgrade (Req 3.1, 3.2, 3.3).
 - Criptografia em Repouso: Os segredos gerados pelo Autenticador de Dois Fatores (TOTP) são caracterizados como dados sensíveis e não devem ser armazenados em texto plano. Eles foram protegidos usando criptografia simétrica com o padrão de mercado AES-256-GCM (Advanced Encryption Standard no modo Galois/Counter Mode). Este modo foi escolhido pois, além da confidencialidade, ele fornece autenticação da mensagem (Auth Tag), impedindo manipulação maliciosa do dado direto no banco de dados (Req 3.4, 3.5).
 - Proteção de Chaves: A chave mestra AES de 256 bits é estritamente injetada através do arquivo local de ambiente .env, impedindo que o segredo vaze em repositórios de código-fonte (Req 3.6, 3.7, 3.8).
+
+## 7. Arquitetura do projeto 
+O projeto segue o padrão MVC (Model-View-Controller):
+src/
+├── utils/
+│   └── crypto.ts          → funções de criptografia AES-256-GCM
+├── models/
+│   └── userModel.ts       → acesso ao banco de dados via Prisma
+├── middlewares/
+│   ├── security.ts        → helmet, cors, session e rate limit
+│   └── auth.ts            → verificação de sessão autenticada
+├── controllers/
+│   ├── authController.ts  → lógica de signup, login, 2FA e logout
+│   └── recoveryController.ts → lógica de recuperação de senha
+├── routes/
+│   ├── authRoutes.ts      → mapeamento das rotas de autenticação
+│   └── dashboardRoutes.ts → rotas protegidas por sessão
+└── server.ts              → inicialização do servidor HTTPS
+
