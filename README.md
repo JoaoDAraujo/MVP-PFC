@@ -7,12 +7,12 @@ João Vitor Fernandes D'Araujo
 
 ## TECNOLOGIAS UTILIZADAS
 
-- Backend: Node.js com Express e TypeScript
+- Backend: Node.js v20 com Express v5 e TypeScript v6
 - Banco de Dados: SQLite via Prisma ORM v6
-- Criptografia: Argon2 (Padrão recomendado pela OWASP)
-- MFA/2FA: Speakeasy (Geração de tokens TOTP) e QRCode
-- Segurança de Sessão: Express-Session e Helmet
-- Proteção de Rotas: Express-Rate-Limit
+- Criptografia: Argon2 v0.44 (padrão OWASP)
+- MFA/2FA: Speakeasy v2.0 e QRCode v1.5
+- Segurança de Sessão: Express-Session v1.19 e Helmet v8
+- Proteção de Rotas: Express-Rate-Limit v8
 - Frontend: HTML5, JavaScript Vanilla e Bootstrap 5
 - Arquitetura: MVC (Model-View-Controller)
 ---
@@ -70,6 +70,8 @@ Abaixo consta a descrição técnica de como cada item de segurança exigido foi
 - Proteção de Chaves: A chave mestra AES de 256 bits é estritamente injetada através do arquivo local de ambiente .env, impedindo que o segredo vaze em repositórios de código-fonte (Req 3.6, 3.7, 3.8).
 
 ## 7. Arquitetura do projeto 
+
+```
 O projeto segue o padrão MVC (Model-View-Controller):
 src/
 ├── utils/
@@ -86,4 +88,4 @@ src/
 │   ├── authRoutes.ts      → mapeamento das rotas de autenticação
 │   └── dashboardRoutes.ts → rotas protegidas por sessão
 └── server.ts              → inicialização do servidor HTTPS
-
+```
