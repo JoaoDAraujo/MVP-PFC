@@ -1,34 +1,54 @@
-import { PrismaClient } from '@prisma/client';
 
-// ==========================================
-// Model — camada de acesso ao banco de dados
-// Toda query ao Prisma fica aqui, centralizada
-// ==========================================
+import { db } from "../utils/firebaseConfig";
 
-const db = new PrismaClient();
+
+const usersCollection = db.collection("users");
 
 export const UserModel = {
-  findByUsername: (username: string) =>
-    db.user.findUnique({ where: { username } }),
+  // Busca por username
+  findByUsername: async (username: string) => {
+    const snapshot = await usersCollection.where("username", "==", username).limit(1).get();
+    if (snapshot.empty) return null;
+    return { id: snapshot.docs[0].id, ...snapshot.docs[0].data() };
+  },
 
-  findById: (id: number) =>
-    db.user.findUnique({ where: { id } }),
+  // Busca por ID 
+  findById: async (id: string) => {
+    const doc = await usersCollection.doc(id).get();
+    if (!doc.exists) return null;
+    return { id: doc.id, ...doc.data() };
+  },
 
-  findByRecoveryToken: (hashToken: string) =>
-    db.user.findFirst({ where: { recoveryToken: hashToken } }),
+  // Busca por token de recuperação
+  findByRecoveryToken: async (hashToken: string) => {
+    const snapshot = await usersCollection.where("recoveryToken", "==", hashToken).limit(1).get();
+    if (snapshot.empty) return null;
+    return { id: snapshot.docs[0].id, ...snapshot.docs[0].data() };
+  },
 
-  create: (data: { username: string; passwordHash: string; twoFactorSecret: string }) =>
-    db.user.create({ data }),
+  // Criação de usuário
+  create: async (data: { username: string; passwordHash: string; twoFactorSecret: string }) => {
+    const res = await usersCollection.add({
+      ...data,
+      createdAt: new Date()
+    });
+    return { id: res.id, ...data };
+  },
 
-  updateRecoveryToken: (id: number, recoveryToken: string, recoveryTokenExpires: Date) =>
-    db.user.update({
-      where: { id },
-      data: { recoveryToken, recoveryTokenExpires }
-    }),
+  // Atualiza token de recuperação
+  updateRecoveryToken: async (id: string, recoveryToken: string, recoveryTokenExpires: Date) => {
+    await usersCollection.doc(id).update({
+      recoveryToken,
+      recoveryTokenExpires
+    });
+  },
 
-  updatePassword: (id: number, passwordHash: string) =>
-    db.user.update({
-      where: { id },
-      data: { passwordHash, recoveryToken: null, recoveryTokenExpires: null }
-    }),
+  // Atualiza a senha e limpa tokens
+  updatePassword: async (id: string, passwordHash: string) => {
+    await usersCollection.doc(id).update({
+      passwordHash,
+      recoveryToken: null,
+      recoveryTokenExpires: null
+    });
+  }
 };
