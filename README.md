@@ -7,14 +7,15 @@ João Vitor Fernandes D'Araujo
 
 ## TECNOLOGIAS UTILIZADAS
 
-- Backend: Node.js v20 com Express v5 e TypeScript v6
-- Banco de Dados: SQLite via Prisma ORM v6
-- Criptografia: Argon2 v0.44 (padrão OWASP)
-- MFA/2FA: Speakeasy v2.0 e QRCode v1.5
-- Segurança de Sessão: Express-Session v1.19 e Helmet v8
-- Proteção de Rotas: Express-Rate-Limit v8
-- Frontend: HTML5, JavaScript Vanilla e Bootstrap 5
-- Arquitetura: MVC (Model-View-Controller)
+-Backend: Node.js v20 com Express v5 e TypeScript v6
+-Banco de Dados: Firebase Firestore (NoSQL em nuvem)
+-Criptografia: Argon2 v0.44 (padrão OWASP)
+-MFA/2FA: Speakeasy v2.0 e QRCode v1.5
+-Segurança de Sessão: Express-Session v1.19 e Helmet v8
+-Proteção de Rotas: Express-Rate-Limit v8
+-Frontend: HTML5, JavaScript Vanilla e Bootstrap 5
+-Arquitetura: MVC (Model-View-Controller)
+
 ---
 
 ## INSTRUÇÕES PARA EXECUÇÃO
@@ -25,16 +26,11 @@ Passo 1: Instale as dependências. Isso criará a pasta node_modules:
 npm install
 (confira se o terminal está na pasta correta; SI_finalizado/poc-seguranca-auth)
 
-Passo 2: Sincronize o banco de dados. Isso gerará o arquivo local dev.db:
-npx prisma db push
-
-Passo 3: Gere o Prisma Client para as tipagens do TypeScript:
-npx prisma generate
-
-Passo 4: Inicie o servidor de desenvolvimento:
+Passo 2: Inicie o servidor de desenvolvimento:
 npm run dev
 
-Passo 5: Acesse no navegador: http://localhost:3000
+Passo 3: Acesse no navegador: http://localhost:3000
+
 
 ---
 
@@ -77,7 +73,7 @@ src/
 ├── utils/
 │   └── crypto.ts          → funções de criptografia AES-256-GCM
 ├── models/
-│   └── userModel.ts       → acesso ao banco de dados via Prisma
+│   └── userModel.ts       → acesso ao banco de dados via Firebase Firestore
 ├── middlewares/
 │   ├── security.ts        → helmet, cors, session e rate limit
 │   └── auth.ts            → verificação de sessão autenticada
