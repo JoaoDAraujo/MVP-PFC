@@ -1,8 +1,11 @@
 ## GRUPO
 
 Bianca Duarte Bernardo
+
 Ellen Alves Inácio
+
 Guilherme Marins Rodrigues
+
 João Vitor Fernandes D'Araujo
 
 ## TECNOLOGIAS UTILIZADAS
