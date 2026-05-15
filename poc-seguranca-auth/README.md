@@ -68,6 +68,7 @@ Abaixo consta a descrição técnica de como cada item de segurança exigido foi
 ### 7. Arquitetura do projeto
 
 O projeto segue o padrão MVC (Model-View-Controller):
+"""
 src/
 ├── utils/
 │   └── crypto.ts          → funções de criptografia AES-256-GCM
@@ -83,3 +84,4 @@ src/
 │   ├── authRoutes.ts      → mapeamento das rotas de autenticação
 │   └── dashboardRoutes.ts → rotas protegidas por sessão
 └── server.ts              → inicialização do servidor HTTPS
+"""
