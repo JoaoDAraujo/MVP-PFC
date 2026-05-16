@@ -26,7 +26,7 @@ João Vitor Fernandes D'Araujo
 Pre-requisito: É necessário ter o Node.js instalado na máquina.
 
 Passo 1: Instale as dependências. Isso criará a pasta node_modules:
-npm install
+npm install e npm install firebase-admin
 (confira se o terminal está na pasta correta; SI_finalizado/poc-seguranca-auth)
 
 Passo 2: Inicie o servidor de desenvolvimento:
