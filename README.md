@@ -31,7 +31,7 @@ Pre-requisito: É necessário ter o Node.js instalado na máquina.
 
 - npm install
 
-(confira se o terminal está na pasta correta; SI_finalizado/poc-seguranca-auth)
+(confira se o terminal está na pasta correta; MVP-PFC-main)
 
 ### Passo 2: Instale as bibliotecas adicionais necessárias para Firebase, Google OAuth e envio de e-mail:
 
