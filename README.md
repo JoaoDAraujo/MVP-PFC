@@ -10,16 +10,16 @@ João Vitor Fernandes D'Araujo
 
 ## TECNOLOGIAS UTILIZADAS
 
--Backend: Node.js v20 com Express v5 e TypeScript v6
--Banco de Dados: Firebase Firestore (NoSQL em nuvem)
--Criptografia: Argon2 v0.44 (padrão OWASP)
--MFA/2FA: Speakeasy v2.0 e QRCode v1.5
--Segurança de Sessão: Express-Session v1.19 e Helmet v8
--Proteção de Rotas: Express-Rate-Limit v8
--Frontend: HTML5, JavaScript Vanilla e Bootstrap 5
--Arquitetura: MVC (Model-View-Controller)
--Autenticação Social: Google Identity Services (OAuth 2.0) + google-auth-library
--Envio de E-mail: Nodemailer v6 com Gmail SMTP
+- Backend: Node.js v20 com Express v5 e TypeScript v6
+- Banco de Dados: Firebase Firestore (NoSQL em nuvem)
+- Criptografia: Argon2 v0.44 (padrão OWASP)
+- MFA/2FA: Speakeasy v2.0 e QRCode v1.5
+- Segurança de Sessão: Express-Session v1.19 e Helmet v8
+- Proteção de Rotas: Express-Rate-Limit v8
+- Frontend: HTML5, JavaScript Vanilla e Bootstrap 5
+- Arquitetura: MVC (Model-View-Controller)
+- Autenticação Social: Google Identity Services (OAuth 2.0) + google-auth-library
+- Envio de E-mail: Nodemailer v6 com Gmail SMTP
 
 ---
 
