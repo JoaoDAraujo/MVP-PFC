@@ -42,7 +42,7 @@ Pre-requisito: É necessário ter o Node.js instalado na máquina.
 
 - npm run dev
 
-### Passo 4: Acesse no navegador: http://localhost:3000
+### Passo 4: Acesse no navegador: http://localhost:3443
 
 ---
 
@@ -90,6 +90,7 @@ O projeto segue o padrão MVC (Model-View-Controller):
 src/
 ├── utils/
 │   ├── crypto.ts          → funções de criptografia AES-256-GCM
+│   ├── firebaseConfig.ts  → carrega as credenciais e conecta ao Firebase
 │   └── mailer.ts          → serviço de envio de e-mail via Gmail (Nodemailer)
 ├── models/
 │   └── userModel.ts       → acesso ao banco de dados via Firebase Firestore
