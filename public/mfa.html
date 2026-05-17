@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>PoC - Verificação 2FA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light d-flex align-items-center vh-100">
+    <div class="container" style="max-width: 400px;">
+        <div class="card shadow border-warning border-2">
+            <div class="card-body p-4 text-center">
+                <h4 class="card-title mb-2 text-warning-emphasis fw-bold">Segurança Adicional</h4>
+                <p class="text-muted small mb-4">Escolha como deseja receber seu código de verificação.</p>
+
+                <div id="methodChoice" class="d-flex gap-2 mb-4">
+                    <button onclick="selectMethod('app')" id="btnApp"
+                        class="btn btn-warning w-50 fw-bold text-dark">
+                        App Autenticador
+                    </button>
+                    <button onclick="selectMethod('email')" id="btnEmail"
+                        class="btn btn-outline-warning w-50 fw-bold">
+                        Receber por E-mail
+                    </button>
+                </div>
+
+                <div id="panelApp">
+                    <p class="text-muted small mb-3">Insira o código de 6 dígitos gerado pelo seu aplicativo autenticador.</p>
+                    <div class="mb-4">
+                        <input type="text" id="mfaCode" class="form-control form-control-lg text-center fw-bold border-warning"
+                            placeholder="000000" maxlength="6" inputmode="numeric">
+                    </div>
+                    <button onclick="submitMfa()" class="btn btn-warning w-100 fw-bold text-dark">Validar Autenticação</button>
+                </div>
+
+                <div id="panelEmail" class="d-none">
+                    <div id="emailStep1">
+                        <p class="text-muted small mb-3">Enviaremos um código de 6 dígitos para o e-mail cadastrado na sua conta.</p>
+                        <button onclick="sendMfaByEmail()" class="btn btn-warning w-100 fw-bold text-dark mb-2">Enviar código por e-mail</button>
+                    </div>
+                    <div id="emailStep2" class="d-none">
+                        <p class="text-muted small mb-1">Código enviado! Verifique sua caixa de entrada.</p>
+                        <p class="text-muted small mb-3">O código expira em <strong>15 minutos</strong>.</p>
+                        <div class="mb-4">
+                            <input type="text" id="mfaEmailCode" class="form-control form-control-lg text-center fw-bold border-warning"
+                                placeholder="000000" maxlength="6" inputmode="numeric">
+                        </div>
+                        <button onclick="submitMfaEmail()" class="btn btn-warning w-100 fw-bold text-dark">Validar Código</button>
+                    </div>
+                </div>
+
+                <p id="mfaFeedback" class="text-danger small text-center mt-3 fw-bold"></p>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>PoC - Recuperação de Senha</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light d-flex align-items-center vh-100">
+    <div class="container" style="max-width: 400px;">
+
+        <div class="d-flex justify-content-center align-items-center gap-2 mb-4">
+            <span id="step-badge-1" class="badge rounded-pill bg-primary px-3 py-2">1. Usuário</span>
+            <span class="text-muted small"></span>
+            <span id="step-badge-2" class="badge rounded-pill bg-secondary px-3 py-2">2. Código</span>
+            <span class="text-muted small"></span>
+            <span id="step-badge-3" class="badge rounded-pill bg-secondary px-3 py-2">3. Nova Senha</span>
+        </div>
+
+        <div id="step1" class="card shadow-sm border-primary border-2">
+            <div class="card-body p-4">
+                <h5 class="fw-bold text-primary-emphasis text-center mb-1">Recuperar Acesso</h5>
+                <p class="text-muted small text-center mb-4">Informe seu nome de usuário para começar.</p>
+
+                <div class="mb-4">
+                    <label class="form-label text-muted small">Usuário</label>
+                    <input type="text" id="recoverUser" class="form-control" placeholder="Digite seu usuário">
+                </div>
+
+                <button onclick="recoverStep1()" class="btn btn-primary w-100 fw-bold mb-2">Continuar</button>
+                <p id="recoverFeedback1" class="text-danger small text-center fw-bold mt-2 mb-0"></p>
+
+                <hr class="my-3">
+                <div class="text-center">
+                    <a href="/" class="text-decoration-none small text-muted">← Voltar ao Login</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="step2" class="card shadow border-warning border-2 d-none">
+            <div class="card-body p-4 text-center">
+                <h5 class="fw-bold text-warning-emphasis mb-1">Verifique seu E-mail</h5>
+                <p class="text-muted small mb-1">Enviamos um código de 6 dígitos para o e-mail cadastrado na sua conta.</p>
+                <p class="text-muted small mb-4">O código expira em <strong>15 minutos</strong>.</p>
+
+                <div class="mb-4">
+                    <input type="text" id="recoverMfaCode" class="form-control form-control-lg text-center fw-bold border-warning"
+                        placeholder="000000" maxlength="6" inputmode="numeric">
+                </div>
+
+                <button onclick="recoverStep2()" class="btn btn-warning w-100 fw-bold text-dark">Validar Código</button>
+                <p id="recoverFeedback2" class="text-danger small text-center mt-3 fw-bold mb-0"></p>
+
+                <hr class="my-3">
+                <div class="text-center">
+                    <a href="/recover.html" class="text-decoration-none small text-muted">← Reiniciar</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="step3" class="card shadow border-success border-2 d-none">
+            <div class="card-body p-4">
+                <h5 class="fw-bold text-success-emphasis text-center mb-1">Redefinir Senha</h5>
+                <p class="text-muted small text-center mb-4">Escolha uma nova senha segura para sua conta.</p>
+
+                <div class="mb-3">
+                    <label class="form-label text-muted small">Nova Senha</label>
+                    <input type="password" id="newPassword" class="form-control" placeholder="Mínimo 8 caracteres">
+                </div>
+                <div class="mb-4">
+                    <label class="form-label text-muted small">Confirmar Nova Senha</label>
+                    <input type="password" id="confirmPassword" class="form-control" placeholder="Repita a nova senha">
+                </div>
+
+                <button onclick="recoverStep3()" class="btn btn-success w-100 fw-bold mb-2">Salvar Nova Senha</button>
+                <p id="recoverFeedback3" class="text-danger small text-center fw-bold mt-2 mb-0"></p>
+            </div>
+        </div>
+
+        <div id="stepSuccess" class="card shadow border-success border-2 d-none">
+            <div class="card-body p-4 text-center">
+                <div class="mb-3">
+                    <span style="font-size: 3rem;">✅</span>
+                </div>
+                <h5 class="fw-bold text-success-emphasis mb-2">Senha Redefinida!</h5>
+                <p class="text-muted small mb-4">Sua senha foi alterada com sucesso. Faça login com suas novas credenciais.</p>
+                <a href="/" class="btn btn-success w-100 fw-bold">Ir para o Login</a>
+            </div>
+        </div>
+
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
