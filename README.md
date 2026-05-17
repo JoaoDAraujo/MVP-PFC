@@ -27,22 +27,22 @@ João Vitor Fernandes D'Araujo
 
 Pre-requisito: É necessário ter o Node.js instalado na máquina.
 
-# Passo 1: Instale as dependências. Isso criará a pasta node_modules:
+### Passo 1: Instale as dependências. Isso criará a pasta node_modules:
 
 - npm install
 
 (confira se o terminal está na pasta correta; SI_finalizado/poc-seguranca-auth)
 
-# Passo 2: Instale as bibliotecas adicionais necessárias para Firebase, Google OAuth e envio de e-mail:
+### Passo 2: Instale as bibliotecas adicionais necessárias para Firebase, Google OAuth e envio de e-mail:
 
 - npm install firebase-admin google-auth-library nodemailer
 - npm install --save-dev @types/nodemailer
 
-# Passo 3: Inicie o servidor de desenvolvimento:
+### Passo 3: Inicie o servidor de desenvolvimento:
 
 - npm run dev
 
-# Passo 4: Acesse no navegador: http://localhost:3000
+### Passo 4: Acesse no navegador: http://localhost:3000
 
 ---
 
